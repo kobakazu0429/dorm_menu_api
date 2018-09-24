@@ -39,11 +39,22 @@ exports.get_next = () => {
   const d = now.get('date');
   const h = now.get('hour');
 
-  let defaultAttributes = ['id', 'year', 'month', 'day', 'week'];
+  const defaultAttributes = ['id', 'year', 'month', 'day', 'week'];
   let attributes = null;
+  let where = { year: y, month: m, day: d };
 
   if (h <= 9 || h > 20) {
     attributes = defaultAttributes.concat(['morning']);
+
+    if (h > 20) {
+      if (now.add(1, 'day').get('date') === 1) {
+        where.year = now.get('year');
+        where.month = now.get('month');
+        where.day = now.get('date');
+      } else {
+        where.day += 1;
+      }
+    }
   } else if (h <= 14 || h > 9) {
     attributes = defaultAttributes.concat(['lunch']);
   } else if (h <= 20 || h > 14) {
@@ -56,7 +67,7 @@ exports.get_next = () => {
       .then(() =>
         Menu.find({
           attributes: attributes,
-          where: { year: y, month: m, day: d }
+          where: where
         })
       )
       .then(result => result.toJSON());
