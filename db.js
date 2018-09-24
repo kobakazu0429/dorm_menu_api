@@ -26,7 +26,7 @@ const Menu = sequelize.define('menu', MenuModel);
 
 exports.get_all = () => {
   return sequelize
-    .sync()
+    .sync({ alter: true })
     .then(() => Menu.findAll({ attributes: colums }))
     .then(result => result.map(e => e.toJSON()));
 };
@@ -56,7 +56,7 @@ exports.get_next = () => {
 
   if (!(defaultAttributes === attributes)) {
     return sequelize
-      .sync()
+      .sync({ alter: true })
       .then(() =>
         Menu.find({
           attributes: attributes,
@@ -71,13 +71,13 @@ exports.get_next = () => {
 
 exports.get_that_day = (y, m, d) => {
   return sequelize
-    .sync()
+    .sync({ alter: true })
     .then(() => Menu.find({ attributes: colums, where: { year: y, month: m, day: d } }))
     .then(result => result.toJSON());
 };
 
 exports.create = async data => {
-  await sequelize.sync().then(() =>
+  await sequelize.sync({ alter: true }).then(() =>
     Menu.create({
       year: data.year,
       month: data.month,
