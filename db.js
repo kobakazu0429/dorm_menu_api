@@ -44,13 +44,9 @@ exports.get_next = () => {
 
   if (h <= 9 || h > 20) {
     attributes = defaultAttributes.concat(['morning']);
-  }
-
-  if (h <= 14 || h > 9) {
+  } else if (h <= 14 || h > 9) {
     attributes = defaultAttributes.concat(['lunch']);
-  }
-
-  if (h <= 20 || h > 14) {
+  } else if (h <= 20 || h > 14) {
     attributes = defaultAttributes.concat(['dinnerA', 'dinnerB', 'dinnerAB']);
   }
 
