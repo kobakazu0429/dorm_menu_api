@@ -9,11 +9,12 @@ PDFJS.cMapUrl = 'node_modules/pdfjs-dist/cmaps';
 PDFJS.cMapPacked = true;
 PDFJS.disableFontFace = true;
 
-const returnJSON = async pdfFilePath => {
-  const pdfFile = new Uint8Array(fs.readFileSync(pdfFilePath));
+const returnJSON = async pdfUrl => {
+  // const pdfFile = new Uint8Array(fs.readFileSync(pdfUrl));
 
   const pdfRead = await PDFJS.getDocument({
-    data: pdfFile,
+    // data: pdfFile,
+    url: pdfUrl,
     nativeImageDecoderSupport: 'none',
     disableNativeImageDecoder: true,
     disableFontFace: true
