@@ -6,6 +6,9 @@
   "author": "kobakakzu0429 <kobakazu10@gmail.com>",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "dotenv": "^6.0.0",
