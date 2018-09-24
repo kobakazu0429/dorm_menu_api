@@ -1,10 +1,6 @@
 exports.getTimeJST = () => {
-  process.env.TZ = 'Asia/Tokyo';
   const moment = require('moment-timezone');
-  const date = moment()
-    .tz('Asia/Tokyo')
-    .format();
-  return date;
+  return moment().tz('Asia/Tokyo');
 };
 
 exports.enumWeek = str => {

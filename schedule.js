@@ -12,7 +12,7 @@ const isLinkAlive = async path => {
 
 const main = async () => {
   const now = utils.getTimeJST();
-  const m = now.getMonth() + 1;
+  const m = now.get('month') + 1;
   const _m = '0' + m;
   const path = `https://www.kure-nct.ac.jp/life/dorm/pdf/${_m.slice(-2)}_menu.pdf`;
 
@@ -24,7 +24,7 @@ const main = async () => {
 
   for (menu in pdfData) {
     const { week, morning, lunch, dinnerA, dinnerB, dinnerAB } = pdfData[menu];
-    const year = now.getFullYear();
+    const year = now.get('year');
     const [month, day] = menu.split(/月|日/);
     await db.create({
       year: year,

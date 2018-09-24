@@ -34,10 +34,10 @@ exports.get_all = () => {
 exports.get_next = () => {
   const now = utils.getTimeJST();
 
-  const y = now.getFullYear();
-  const m = now.getMonth() + 1;
-  const d = now.getDate();
-  const h = now.getHours();
+  const y = now.get('year');
+  const m = now.get('month') + 1;
+  const d = now.get('date');
+  const h = now.get('hour');
 
   let defaultAttributes = ['id', 'year', 'month', 'day', 'week'];
   let attributes = null;
