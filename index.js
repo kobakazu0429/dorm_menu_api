@@ -3,7 +3,7 @@ const app = express();
 
 const db = require('./db');
 
-const server = app.listen(3000, () => {
+const server = app.listen(process.env.PORT || 3000, () => {
   console.log(`You can see here:\nhttp://localhost:${server.address().port}`);
 });
 
