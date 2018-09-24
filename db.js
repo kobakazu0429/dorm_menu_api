@@ -77,20 +77,17 @@ exports.get_that_day = (y, m, d) => {
 };
 
 exports.create = data => {
-  sequelize
-    .sync()
-    .then(() =>
-      Menu.create({
-        year: data.year,
-        month: data.month,
-        day: data.day,
-        week: data.week,
-        morning: data.morning,
-        lunch: data.lunch,
-        dinnerA: data.dinnerA,
-        dinnerB: data.dinnerB,
-        dinnerAB: data.dinnerA
-      })
-    )
-    .then(() => true);
+  sequelize.sync().then(() =>
+    Menu.create({
+      year: data.year,
+      month: data.month,
+      day: data.day,
+      week: data.week,
+      morning: data.morning,
+      lunch: data.lunch,
+      dinnerA: data.dinnerA,
+      dinnerB: data.dinnerB,
+      dinnerAB: data.dinnerAB
+    })
+  );
 };
