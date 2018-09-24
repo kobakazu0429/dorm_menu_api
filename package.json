@@ -8,6 +8,8 @@
   "private": false,
   "dependencies": {
     "express": "^4.16.3",
-    "pdfjs-dist": "^2.0.489"
+    "pdfjs-dist": "^2.0.489",
+    "pg": "^7.4.3",
+    "sequelize": "^4.38.1"
   }
 }
