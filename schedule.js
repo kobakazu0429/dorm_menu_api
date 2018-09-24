@@ -26,8 +26,7 @@ const main = async () => {
     const { week, morning, lunch, dinnerA, dinnerB, dinnerAB } = pdfData[menu];
     const year = now.getFullYear();
     const [month, day] = menu.split(/月|日/);
-
-    db.create({
+    await db.create({
       year: year,
       month: month,
       day: day,

@@ -76,8 +76,8 @@ exports.get_that_day = (y, m, d) => {
     .then(result => result.toJSON());
 };
 
-exports.create = data => {
-  sequelize.sync().then(() =>
+exports.create = async data => {
+  await sequelize.sync().then(() =>
     Menu.create({
       year: data.year,
       month: data.month,
