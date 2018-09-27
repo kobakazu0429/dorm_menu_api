@@ -18,7 +18,7 @@ const sequelize = new Sequelize(env.DATABASE, env.USER, env.PASSWORD, {
   operatorsAliases: false
 });
 
-const colums = ['id', 'year', 'month', 'day', 'week', 'morning', 'lunch', 'dinnerA', 'dinnerB', 'dinnerAB'];
+const colums = ['id', 'year', 'month', 'day', 'morning', 'lunch', 'dinnerA', 'dinnerB', 'dinnerAB'];
 
 // Define Models ==============================================================
 const Menu = sequelize.define('menu', MenuModel);
@@ -39,7 +39,7 @@ exports.get_next = () => {
   const d = now.get('date');
   const h = now.get('hour');
 
-  const defaultAttributes = ['id', 'year', 'month', 'day', 'week'];
+  const defaultAttributes = ['id', 'year', 'month', 'day'];
   let attributes = null;
   let where = { year: y, month: m, day: d };
 
@@ -89,7 +89,6 @@ exports.create = async data => {
       year: data.year,
       month: data.month,
       day: data.day,
-      week: data.week,
       morning: data.morning,
       lunch: data.lunch,
       dinnerA: data.dinnerA,
