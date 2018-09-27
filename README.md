@@ -11,3 +11,15 @@ API Routing
 | GET         | /:year/:month/:day | That day's all data                       |
 
 <!-- |             | GET                |             | -->
+
+## Usage
+
+### `index.js`
+
+express server
+`$ node index.js`
+
+### `schedule.js`
+
+PDF ファイルをダウンロードし、パース後 DB に保存します。
+`$ node schedule.js`
