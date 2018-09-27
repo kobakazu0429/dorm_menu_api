@@ -23,14 +23,13 @@ const main = async () => {
   const pdfData = await parse(path);
 
   for (menu in pdfData) {
-    const { week, morning, lunch, dinnerA, dinnerB, dinnerAB } = pdfData[menu];
+    const { morning, lunch, dinnerA, dinnerB, dinnerAB } = pdfData[menu];
     const year = now.get('year');
     const [month, day] = menu.split(/月|日/);
     await db.create({
       year: year,
       month: month,
       day: day,
-      week: utils.enumWeek(week),
       morning: morning,
       lunch: lunch,
       dinnerA: dinnerA,
