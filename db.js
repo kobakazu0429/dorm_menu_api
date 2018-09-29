@@ -55,9 +55,9 @@ exports.get_next = () => {
         where.day += 1;
       }
     }
-  } else if (h <= 14 || h > 9) {
+  } else if (h <= 14 && h > 9) {
     attributes = defaultAttributes.concat(['lunch']);
-  } else if (h <= 20 || h > 14) {
+  } else if (h <= 20 && h > 14) {
     attributes = defaultAttributes.concat(['dinnerA', 'dinnerB', 'dinnerAB']);
   }
 
