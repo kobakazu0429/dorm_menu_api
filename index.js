@@ -1,3 +1,5 @@
+const schedule = require('node-schedule');
+
 const express = require('express');
 const app = express();
 
@@ -5,6 +7,10 @@ const db = require('./db');
 
 const server = app.listen(process.env.PORT || 3000, () => {
   console.log(`You can see here:\nhttp://localhost:${server.address().port}`);
+
+  schedule.scheduleJob('* * 18 * * *', () => {
+    console.log('実行');
+  });
 });
 
 app.get('/all', async (req, res) => {
