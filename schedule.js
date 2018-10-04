@@ -37,6 +37,8 @@ const main = async () => {
       dinnerAB: dinnerAB
     });
   }
+  console.log('Done');
+  process.exit(0);
 };
 
 main();
