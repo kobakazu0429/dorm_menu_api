@@ -95,7 +95,7 @@ const parse_data = data => {
         .replace(/牛乳/g, '')
         .replace(/パン/g, '')
         .replace(/ジャム/g, '')
-        .replace(/サラダ/g, '')
+        .replace(/\nサラダ\n/g, '\n')
         .replace(/デザート/g, '')
         .replace(/ふりかけ/g, '')
         .replace(/マーガリン/g, '')
