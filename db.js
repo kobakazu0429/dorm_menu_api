@@ -2,6 +2,7 @@ const env = require('./env');
 
 const utils = require('./utils');
 const MenuModel = require('./models/menu');
+const SaveModel = require('./models/save');
 
 const Sequelize = require('sequelize');
 
@@ -22,6 +23,7 @@ const colums = ['id', 'year', 'month', 'day', 'morning', 'lunch', 'dinnerA', 'di
 
 // Define Models ==============================================================
 const Menu = sequelize.define('menu', MenuModel);
+const IsSave = sequelize.define('save', SaveModel);
 // ============================================================================
 
 exports.get_all = () => {
@@ -94,6 +96,26 @@ exports.create = async data => {
       dinnerA: data.dinnerA,
       dinnerB: data.dinnerB,
       dinnerAB: data.dinnerAB
+    })
+  );
+};
+
+exports.is_saved = (y, m) => {
+  return sequelize
+    .sync({ alter: true })
+    .then(() => IsSave.find({ attributes: ['isSaved'], where: { year: y, month: m } }))
+    .then(result => {
+      if (result) return result.toJSON().isSaved;
+      return false;
+    });
+};
+
+exports.to_saved = async (y, m) => {
+  await sequelize.sync({ alter: true }).then(() =>
+    IsSave.create({
+      year: y,
+      month: m,
+      isSaved: true
     })
   );
 };
