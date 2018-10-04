@@ -12,8 +12,15 @@ const isLinkAlive = async path => {
 
 const main = async () => {
   const now = utils.getTimeJST();
+  const year = now.get('year');
   const m = now.get('month') + 1;
   const _m = '0' + m;
+
+  if (await db.is_saved(year, m)) {
+    console.log(`${year}/${m} exsit`);
+    process.exit(0);
+  }
+
   const path = `https://www.kure-nct.ac.jp/life/dorm/pdf/${_m.slice(-2)}_menu.pdf`;
 
   if (!(await isLinkAlive(path))) {
@@ -24,7 +31,6 @@ const main = async () => {
 
   for (menu in pdfData) {
     const { morning, lunch, dinnerA, dinnerB, dinnerAB } = pdfData[menu];
-    const year = now.get('year');
     const [month, day] = menu.split(/月|日/);
     await db.create({
       year: year,
@@ -38,6 +44,10 @@ const main = async () => {
     });
   }
   console.log('Done');
+
+  await db.to_saved(year, m);
+  console.log(`${year}/${m} is saved => true`);
+
   process.exit(0);
 };
 

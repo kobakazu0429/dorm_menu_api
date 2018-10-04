@@ -103,8 +103,11 @@ exports.create = async data => {
 exports.is_saved = (y, m) => {
   return sequelize
     .sync({ alter: true })
-    .then(() => IsSave.find({ attributes: 'isSaved', where: { year: y, month: m } }))
-    .then(result => result.toJSON());
+    .then(() => IsSave.find({ attributes: ['isSaved'], where: { year: y, month: m } }))
+    .then(result => {
+      if (result) return result.toJSON().isSaved;
+      return false;
+    });
 };
 
 exports.to_saved = async (y, m) => {
