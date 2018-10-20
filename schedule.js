@@ -18,7 +18,7 @@ const main = async () => {
 
   if (await db.is_saved(year, m)) {
     console.log(`${year}/${m} exsit`);
-    process.exit(0);
+    return;
   }
 
   const path = `https://www.kure-nct.ac.jp/life/dorm/pdf/${_m.slice(-2)}_menu.pdf`;
@@ -48,7 +48,12 @@ const main = async () => {
   await db.to_saved(year, m);
   console.log(`${year}/${m} is saved => true`);
 
-  process.exit(0);
+  return;
 };
+
+if (!module.parent) {
+  main()
+  process.exit(0);
+}
 
 module.exports = main;
