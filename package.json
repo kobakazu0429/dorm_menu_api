@@ -7,7 +7,8 @@
   "private": false,
   "scripts": {
     "lint": "tslint --fix -c ./tslint.json 'src/**/*.ts'",
-    "build": "yarn run lint && webpack --config ./webpack.config.js --watch",
+    "build": "yarn run lint && webpack --config ./webpack.config.js",
+    "build:watch": "yarn build --watch",
     "start:server": "node build/server.js",
     "tslint-check": "tslint-config-prettier-check ./tslint.json"
   },
