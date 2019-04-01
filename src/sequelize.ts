@@ -11,6 +11,13 @@ const sequelize = new Sequelize({
   username: DB_CONFIG.USER,
   password: DB_CONFIG.PASSWORD,
   port: DB_CONFIG.DB_PORT,
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  },
+  logging: false,
   models: [__dirname + "/models"]
 });
 
