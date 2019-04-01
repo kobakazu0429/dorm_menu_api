@@ -16,6 +16,7 @@
       true,
       "allow-fast-null-checks"
     ],
+    "no-console": false,
     "variable-name": [
       true,
       "check-format",
@@ -25,6 +26,34 @@
     "object-literal-sort-keys": false,
     "ordered-imports": false,
     "prefer-const": false,
+    "member-ordering": [
+      true,
+      {
+        "order": [
+          "public-constructor",
+          "protected-constructor",
+          "private-constructor",
+          "constructor",
+
+          "private-static-field",
+          "private-static-method",
+          "private-instance-field",
+          "private-instance-method",
+          "static-field",
+          "public-static-field",
+          "protected-static-field",
+          "public-static-method",
+          "protected-static-method",
+          "static-method",
+          "public-instance-field",
+          "protected-instance-field",
+          "instance-field",
+          "public-instance-method",
+          "protected-instance-method",
+          "instance-method"
+        ]
+      }
+    ],
     "quotemark": [
       true,
       "double"
