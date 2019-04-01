@@ -7,6 +7,5 @@ export const DB_CONFIG = {
   HOST: process.env.DB_HOST || "",
   DATABASE: process.env.DB_DATABASE || "",
   PASSWORD: process.env.DB_PASSWORD || "",
-  DB_PORT: process.env.DB_PORT || "",
-  DIALECT: process.env.DB_DIALEC || ""
+  DB_PORT: Number(process.env.DB_PORT) || 0
 };
