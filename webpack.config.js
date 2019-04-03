@@ -23,7 +23,7 @@ module.exports = {
   },
 
   plugins: [
-    new CleanWebpackPlugin("build")
+    new CleanWebpackPlugin()
   ],
 
   devtool: "source-map",
