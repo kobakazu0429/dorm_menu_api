@@ -6,11 +6,11 @@ import {
   UpdatedAt
 } from "sequelize-typescript";
 
-@Table
+@Table({ modelName: "menus" })
 export class Menus extends Model<Menus> {
   @Column public year!: number;
   @Column public month!: number;
-  @Column public day!: number;
+  @Column public date!: number;
   @Column public morning!: string;
   @Column public lunch!: string;
   @Column public dinnerA!: string;

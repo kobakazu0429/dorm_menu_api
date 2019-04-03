@@ -6,7 +6,7 @@ import {
   UpdatedAt
 } from "sequelize-typescript";
 
-@Table
+@Table({ modelName: "is_saved_menu" })
 export class IsSaved extends Model<IsSaved> {
   @Column public year!: number;
   @Column public month!: number;
