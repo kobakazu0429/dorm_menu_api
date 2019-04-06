@@ -1,11 +1,12 @@
 import { Sequelize } from "sequelize-typescript";
 
 import { DB_CONFIG } from "./env";
+
 import { Menus } from "./models/Menu";
-import { IsSaved } from "./models/IsSaved";
+import { IsSavedMenu } from "./models/IsSavedMenu";
 
 const sequelize = new Sequelize({
-  dialect: "postgres",
+  dialect: "mysql",
   host: DB_CONFIG.HOST,
   database: DB_CONFIG.DATABASE,
   username: DB_CONFIG.USER,
@@ -17,9 +18,12 @@ const sequelize = new Sequelize({
     acquire: 30000,
     idle: 10000
   },
-  logging: false
+  logging: true,
+  sync: {
+    force: true
+  }
 });
 
-sequelize.addModels([Menus, IsSaved]);
+sequelize.addModels([Menus, IsSavedMenu]);
 
 export default sequelize;
