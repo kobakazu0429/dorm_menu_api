@@ -12,6 +12,6 @@ export class IsSavedMenu extends Model<IsSavedMenu> {
   @Column public month!: number;
   @Column public isSaved!: boolean;
 
-  @CreatedAt @Column readonly createdAt!: Date;
-  @UpdatedAt @Column readonly updatedAt!: Date;
+  @CreatedAt @Column public readonly createdAt!: Date;
+  @UpdatedAt @Column public readonly updatedAt!: Date;
 }
