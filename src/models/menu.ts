@@ -7,7 +7,7 @@ import {
 } from "sequelize-typescript";
 
 @Table({ modelName: "menus" })
-export class Menus extends Model<Menus> {
+export class Menu extends Model<Menu> {
   @Column public year!: number;
   @Column public month!: number;
   @Column public date!: number;
