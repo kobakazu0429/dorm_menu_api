@@ -2,7 +2,7 @@ import { Sequelize } from "sequelize-typescript";
 
 import { DB_CONFIG } from "./env";
 
-import { Menus } from "./models/Menu";
+import { Menu } from "./models/Menu";
 import { IsSavedMenu } from "./models/IsSavedMenu";
 
 const sequelize = new Sequelize({
@@ -24,6 +24,6 @@ const sequelize = new Sequelize({
   }
 });
 
-sequelize.addModels([Menus, IsSavedMenu]);
+sequelize.addModels([Menu, IsSavedMenu]);
 
 export default sequelize;
