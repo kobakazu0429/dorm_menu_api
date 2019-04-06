@@ -22,7 +22,7 @@
       "check-format",
       "allow-pascal-case",
       "allow-leading-underscore",
-      "allow-snake-case",
+      "allow-snake-case"
     ],
     "object-literal-sort-keys": false,
     "ordered-imports": false,
