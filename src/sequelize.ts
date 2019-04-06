@@ -18,10 +18,7 @@ const sequelize = new Sequelize({
     acquire: 30000,
     idle: 10000
   },
-  logging: true,
-  sync: {
-    force: true
-  }
+  logging: true
 });
 
 sequelize.addModels([Menu, IsSavedMenu]);
