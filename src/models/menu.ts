@@ -17,6 +17,6 @@ export class Menus extends Model<Menus> {
   @Column public dinnerB!: string;
   @Column public dinnerAB!: string;
 
-  @CreatedAt @Column public createdAt!: Date;
-  @UpdatedAt @Column public updatedAt!: Date;
+  @CreatedAt @Column readonly createdAt!: Date;
+  @UpdatedAt @Column readonly updatedAt!: Date;
 }
