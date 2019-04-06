@@ -1,7 +1,9 @@
-import * as express from "express";
 import * as bodyParser from "body-parser";
+import * as express from "express";
 import * as errorhandler from "strong-error-handler";
+
 import { menus } from "./routes/menu";
+import { is_saved_menu } from "./routes/is_saved_menu";
 
 export const app = express();
 
@@ -22,6 +24,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/menus", menus);
+app.use("/is_saved_menu", is_saved_menu);
 
 app.use(
   errorhandler({
