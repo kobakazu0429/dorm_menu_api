@@ -29,7 +29,7 @@ module.exports = {
   devtool: "source-map",
 
   resolve: {
-    extensions: [".ts"],
+    extensions: [".ts", ".js"],
     modules: ["node_modules"]
   },
 
