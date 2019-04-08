@@ -509,3 +509,5 @@ pdf_table_extractor = function(doc, PDFJS) {
     return result;
   });
 };
+
+module.exports = pdf_table_extractor;
