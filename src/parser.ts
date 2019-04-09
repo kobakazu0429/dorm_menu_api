@@ -41,7 +41,6 @@ const parsePDF2Json = async (pdfUrl: string) => {
     const cleanedMenuTable = cleanData(allTables[i]);
     const parsedMenu = parseData(cleanedMenuTable);
     const savableDBFormat = mapping(parsedMenu);
-    console.log(savableDBFormat);
 
     Object.assign(allData, savableDBFormat);
   }

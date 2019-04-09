@@ -12,3 +12,19 @@ export const isLinkAlived = async (path: string) => {
   if (res.status === 200) return true;
   return false;
 };
+
+export const infomationForCLI = (msg: string) => {
+  console.info(
+    `------------------------------------------------------------
+     ${new Date()}: ${msg}
+     ------------------------------------------------------------`
+  );
+};
+
+export const errorForCLI = (msg: string) => {
+  console.error(
+    `------------------------------------------------------------
+     ${new Date()}: ${msg}
+     ------------------------------------------------------------`
+  );
+};
