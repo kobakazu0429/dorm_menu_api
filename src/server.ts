@@ -19,8 +19,8 @@ const port = process.env.PORT || 3000;
         minute: 0,
         hour: 0
       },
-      () => {
-        console.log("This is Cron.");
+      async () => {
+        await savedMenu2DB();
       }
     );
   });
