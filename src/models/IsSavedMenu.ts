@@ -6,27 +6,17 @@ import {
   UpdatedAt
 } from "sequelize-typescript";
 
-interface IMenu {
-  id: number;
-  year: number;
-  month: number;
-  isSaved: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
 @Table({ modelName: "is_saved_menu" })
 export class IsSavedMenu extends Model<IsSavedMenu> {
   public static async isSavedTargetMonth(options: {
     year: number;
     month: number;
   }) {
-    const result = (await IsSavedMenu.findOne({
-      where: {
-        year: options.year,
-        month: options.month
-      }
-    }).toJSON()) as IMenu;
+    const where = {
+      year: options.year,
+      month: options.month
+    };
+    const result = await this.findOne({ where });
 
     if (result === null) return false;
 

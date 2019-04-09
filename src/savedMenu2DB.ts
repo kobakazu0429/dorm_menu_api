@@ -13,8 +13,10 @@ const savedMenu2DB = async () => {
   const year = now.get("year");
   const month = now.get("month") + 1;
 
-  if (await IsSavedMenu.isSavedTargetMonth({ year, month })) {
-    infomationForCLI(`${year}/${month} is Exsit !`);
+  const isSavedMenu = await IsSavedMenu.isSavedTargetMonth({ year, month });
+
+  if (isSavedMenu) {
+    infomationForCLI(`${year}/${month} is Already Saved !`);
     return;
   }
 
