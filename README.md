@@ -1,25 +1,21 @@
 # dorm_menu_api
 
-## API
+## API v2
 
-API Routing
+### API Routing
 
-| Http Method | Route              | Description                               |
-| ----------- | ------------------ | ----------------------------------------- |
-| GET         | /all               | It's all the data so far.(from: 2018/9 ~) |
-| GET         | /next              | If Lunch Time , return Lunch Data         |
-| GET         | /:year/:month/:day | That day's all data                       |
+#### /api/v2/menus
 
-<!-- |             | GET                |             | -->
+```
+GET: / => Get Menus.
+Params: year, month, date
+Response[JSON]: Result
+```
 
-## Usage
+#### /api/v2/is_saved_menu
 
-### `index.js`
-
-express server
-`$ node index.js`
-
-### `schedule.js`
-
-PDF ファイルをダウンロードし、パース後 DB に保存します。
-`$ node schedule.js`
+```
+GET: / => Get IsSavedMenu.
+Params: year, month
+Response[JSON]: Boolean(true / false)
+```
