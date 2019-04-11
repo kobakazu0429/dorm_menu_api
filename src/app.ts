@@ -17,14 +17,14 @@ app.use(bodyParser.json({ limit: "5mb" }));
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Expose-Headers", "x-total-count");
-  res.header("Access-Control-Allow-Methods", "GET,POST");
+  res.header("Access-Control-Allow-Methods", "GET");
   res.header("Access-Control-Allow-Headers", "Content-Type,authorization");
 
   next();
 });
 
-app.use("/menus", menus);
-app.use("/is_saved_menu", is_saved_menu);
+app.use("/api/v2/menus", menus);
+app.use("/api/v2/is_saved_menu", is_saved_menu);
 
 app.use(
   errorhandler({

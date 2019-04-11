@@ -23,11 +23,11 @@ is_saved_menu.get("", async (req, res, next) => {
   }
 });
 
-is_saved_menu.post("/", async (req, res, next) => {
-  try {
-    const menu = await IsSavedMenu.create(req.body);
-    res.status(201).json(menu);
-  } catch (e) {
-    next(e);
-  }
-});
+// is_saved_menu.post("/", async (req, res, next) => {
+//   try {
+//     const menu = await IsSavedMenu.create(req.body);
+//     res.status(201).json(menu);
+//   } catch (e) {
+//     next(e);
+//   }
+// });

@@ -24,11 +24,11 @@ menus.get("", async (req, res, next) => {
   }
 });
 
-menus.post("/", async (req, res, next) => {
-  try {
-    const result = await Menu.create(req.body);
-    res.status(201).json(result);
-  } catch (e) {
-    next(e);
-  }
-});
+// menus.post("/", async (req, res, next) => {
+//   try {
+//     const result = await Menu.create(req.body);
+//     res.status(201).json(result);
+//   } catch (e) {
+//     next(e);
+//   }
+// });
