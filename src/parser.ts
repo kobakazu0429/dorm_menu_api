@@ -62,13 +62,13 @@ const cleanData = (data: any) => {
   };
 
   for (let i = 0, j = 0, len = data.length; i < len; i++) {
-    const _index = data[i][0] + data[i][1];
+    const _index = data[i].join("");
 
     if (!pattern1.test(_index)) {
       if (!pattern2.test(_index)) {
         if (!pattern3.test(_index)) {
           if (_index) {
-            if (j > 6) throw new Error("This is Unexpected Data Type.");
+            if (j > 6) continue;
 
             cleanedData[ColumnName[j]] = data[i];
             j++;
@@ -149,8 +149,11 @@ const parseData = (data: IMenu) => {
 const mapping = (data: IMenu) => {
   const allData: any = {};
   for (let i = 0; i < 7; i++) {
-    const dailyData: any = {};
+    if (!data.date[i] || data.date[i] === "無し") {
+      continue;
+    }
 
+    const dailyData: any = {};
     dailyData.week = data.week[i];
     dailyData.morning = data.morning[i];
     dailyData.lunch = data.lunch[i];
