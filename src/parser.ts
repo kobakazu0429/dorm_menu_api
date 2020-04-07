@@ -83,7 +83,7 @@ const cleanData = (data: any) => {
 const parseData = (data: IMenu) => {
   for (const key of Object.keys(data)) {
     const record: IMenu[Keys] = data[key];
-    const parsed: string[] = record.map(v => {
+    const parsed: string[] = record.map((v) => {
       return v
         .replace(/^日$/g, "")
         .replace(/(朝\n食)/g, "")
