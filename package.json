@@ -10,6 +10,7 @@
     "build": "yarn run lint && webpack --config ./webpack.config.js",
     "dev": "yarn build --watch",
     "start": "node build/server.js",
+    "cli": "node build/cli.js",
     "tslint-check": "tslint-config-prettier-check ./tslint.json"
   },
   "dependencies": {
