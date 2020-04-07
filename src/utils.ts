@@ -2,9 +2,7 @@ import axios from "axios";
 import moment = require("moment-timezone");
 
 export const getTimeJST = () => {
-  return moment()
-    .utc()
-    .add(9, "h");
+  return moment().utc().add(9, "h");
 };
 
 export const isLinkAlived = async (path: string) => {
