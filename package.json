@@ -11,7 +11,7 @@
     "dev": "yarn build --watch",
     "start": "node build/server.js",
     "cli": "node build/cli.js",
-    "tslint-check": "tslint-config-prettier-check ./tslint.json"
+    "test": "jest"
   },
   "dependencies": {
     "@types/body-parser": "1.19.0",

@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // require("pdfjs-dist/lib/examples/node/domstubs");
-import pdf_table_extractor = require("../vendor/pdf-table-extractor");
+import * as fs from "fs";
 
+import pdf_table_extractor = require("../vendor/pdf-table-extractor");
 import PDFJS = require("pdfjs-dist");
 PDFJS.workerSrc = "../vendor/pdf.worker.js";
 PDFJS.cMapUrl = "../vendor/web/cmaps";
@@ -19,16 +20,21 @@ enum ColumnName {
 type Keys = keyof typeof ColumnName;
 type IMenu = { [key in Keys]: string[] };
 
-const parsePDF2Json = async (pdfUrl: string) => {
-  // const pdfFile = new Uint8Array(fs.readFileSync(pdfUrl));
-
-  const pdfRead = await PDFJS.getDocument({
-    // data: pdfFile,
-    url: pdfUrl,
+const parsePDF2Json = async (pdfUrlOrFileName: string) => {
+  const baseOption = {
     nativeImageDecoderSupport: "none",
     disableNativeImageDecoder: true,
     disableFontFace: true,
-  });
+  };
+
+  const option = pdfUrlOrFileName.startsWith("http")
+    ? { ...baseOption, url: pdfUrlOrFileName }
+    : {
+        ...baseOption,
+        data: new Uint8Array(fs.readFileSync(pdfUrlOrFileName)),
+      };
+
+  const pdfRead = await PDFJS.getDocument(option);
 
   const pdfParsed = await pdf_table_extractor(pdfRead, PDFJS);
 
