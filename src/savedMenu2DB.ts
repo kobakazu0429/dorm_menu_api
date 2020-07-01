@@ -3,7 +3,7 @@ import {
   getTimeJST,
   isLinkAlived,
   infomationForCLI,
-  errorForCLI
+  errorForCLI,
 } from "./utils";
 import { Menu } from "./models/Menu";
 import { IsSavedMenu } from "./models/IsSavedMenu";
@@ -41,7 +41,7 @@ const savedMenu2DB = async () => {
       date: menu_date,
       morning,
       lunch,
-      dinner
+      dinner,
     });
   }
 

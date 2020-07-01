@@ -3,7 +3,7 @@ import {
   CreatedAt,
   Model,
   Table,
-  UpdatedAt
+  UpdatedAt,
 } from "sequelize-typescript";
 
 @Table({ modelName: "menus" })

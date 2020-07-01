@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // require("pdfjs-dist/lib/examples/node/domstubs");
 import pdf_table_extractor = require("../vendor/pdf-table-extractor");
 
@@ -12,7 +13,7 @@ enum ColumnName {
   week,
   morning,
   lunch,
-  dinner
+  dinner,
 }
 
 type Keys = keyof typeof ColumnName;
@@ -26,7 +27,7 @@ const parsePDF2Json = async (pdfUrl: string) => {
     url: pdfUrl,
     nativeImageDecoderSupport: "none",
     disableNativeImageDecoder: true,
-    disableFontFace: true
+    disableFontFace: true,
   });
 
   const pdfParsed = await pdf_table_extractor(pdfRead, PDFJS);
@@ -58,7 +59,7 @@ const cleanData = (data: any) => {
     week: [],
     morning: [],
     lunch: [],
-    dinner: []
+    dinner: [],
   };
 
   for (let i = 0, j = 0, len = data.length; i < len; i++) {
@@ -84,39 +85,42 @@ const parseData = (data: IMenu) => {
   for (const key of Object.keys(data)) {
     const record: IMenu[Keys] = data[key];
     const parsed: string[] = record.map((v) => {
-      return v
-        .replace(/^日$/g, "")
-        .replace(/(朝\n食)/g, "")
-        .replace(/(昼\n食)/g, "")
-        .replace(/(夕\n食)/g, "")
-        .replace(/(副　　　　菜)/g, "")
-        .replace(/Ａ/g, "")
-        .replace(/Ｂ/g, "")
-        .replace(/(\(|\（)/g, "")
-        .replace(/(\)|\）)/g, "")
-        .replace(/曜日/g, "")
-        .replace(/汁物/g, "")
-        .replace(/^\n?ご飯\n/g, "")
-        .replace(/\nご飯/g, "\n")
-        .replace(/^ご飯・/g, "\n")
-        .replace(/納豆/g, "")
-        .replace(/海苔/g, "")
-        .replace(/漬物/g, "")
-        .replace(/牛乳/g, "")
-        .replace(/パン/g, "")
-        .replace(/ジャム/g, "")
-        .replace(/\nサラダ\n/g, "\n")
-        .replace(/デザート/g, "")
-        .replace(/ふりかけ/g, "")
-        .replace(/コーヒー/g, "")
-        .replace(/紅茶/g, "")
-        .replace(/マーガリン/g, "")
-        .replace(/共通メニュー/g, "")
-        .replace(/・/g, "")
-        .replace(/(\n&)+/g, "&")
-        .replace(/(\n)+/g, "\n")
-        .replace(/(\n)+$/g, "")
-        .replace(/^(\n)+/g, "");
+      return (
+        v
+          .replace(/^日$/g, "")
+          .replace(/(朝\n食)/g, "")
+          .replace(/(昼\n食)/g, "")
+          .replace(/(夕\n食)/g, "")
+          // eslint-disable-next-line no-irregular-whitespace
+          .replace(/(副　　　　菜)/g, "")
+          .replace(/Ａ/g, "")
+          .replace(/Ｂ/g, "")
+          .replace(/(\(|（)/g, "")
+          .replace(/(\)|）)/g, "")
+          .replace(/曜日/g, "")
+          .replace(/汁物/g, "")
+          .replace(/^\n?ご飯\n/g, "")
+          .replace(/\nご飯/g, "\n")
+          .replace(/^ご飯・/g, "\n")
+          .replace(/納豆/g, "")
+          .replace(/海苔/g, "")
+          .replace(/漬物/g, "")
+          .replace(/牛乳/g, "")
+          .replace(/パン/g, "")
+          .replace(/ジャム/g, "")
+          .replace(/\nサラダ\n/g, "\n")
+          .replace(/デザート/g, "")
+          .replace(/ふりかけ/g, "")
+          .replace(/コーヒー/g, "")
+          .replace(/紅茶/g, "")
+          .replace(/マーガリン/g, "")
+          .replace(/共通メニュー/g, "")
+          .replace(/・/g, "")
+          .replace(/(\n&)+/g, "&")
+          .replace(/(\n)+/g, "\n")
+          .replace(/(\n)+$/g, "")
+          .replace(/^(\n)+/g, "")
+      );
     });
 
     const newArray: string[] = [];

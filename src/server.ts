@@ -17,7 +17,7 @@ const port = process.env.PORT || 3000;
       {
         second: 0,
         minute: 0,
-        hour: 0
+        hour: 0,
       },
       async () => {
         await savedMenu2DB();

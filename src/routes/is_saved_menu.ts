@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { WhereOptions } from "sequelize/types";
 import { IsSavedMenu } from "../models/IsSavedMenu";
 
 export const is_saved_menu = Router();
@@ -8,7 +9,7 @@ is_saved_menu.get("", async (req, res, next) => {
     const { year, month } = req.query;
 
     if (year || month) {
-      const where: any = {};
+      const where: WhereOptions = {};
 
       if (year) where.year = Number(year);
       if (month) where.month = Number(month);
