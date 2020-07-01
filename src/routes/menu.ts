@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { WhereOptions } from "sequelize/types";
 import { Menu } from "../models/Menu";
 
 export const menus = Router();
@@ -8,7 +9,7 @@ menus.get("", async (req, res, next) => {
     const { year, month, date } = req.query;
 
     if (year || month || date) {
-      const where: any = {};
+      const where: WhereOptions = {};
 
       if (year) where.year = Number(year);
       if (month) where.month = Number(month);

@@ -3,7 +3,7 @@ import {
   CreatedAt,
   Model,
   Table,
-  UpdatedAt
+  UpdatedAt,
 } from "sequelize-typescript";
 
 @Table({ modelName: "is_saved_menu" })
@@ -14,7 +14,7 @@ export class IsSavedMenu extends Model<IsSavedMenu> {
   }) {
     const where = {
       year: options.year,
-      month: options.month
+      month: options.month,
     };
     const result = await this.findOne({ where });
 

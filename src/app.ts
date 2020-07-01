@@ -29,6 +29,6 @@ app.use("/api/v2/is_saved_menu", is_saved_menu);
 app.use(
   errorhandler({
     debug: process.env.ENV !== "prod",
-    log: true
+    log: true,
   })
 );

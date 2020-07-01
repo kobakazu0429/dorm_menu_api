@@ -7,7 +7,7 @@ import {
   getTimeJST,
   isLinkAlived,
   infomationForCLI,
-  errorForCLI
+  errorForCLI,
 } from "./utils";
 
 const cli = meow(
@@ -25,15 +25,24 @@ const cli = meow(
     flags: {
       print: {
         type: "boolean",
-        alias: "p"
+        alias: "p",
       },
       save: {
         type: "boolean",
-        alias: "s"
-      }
-    }
+        alias: "s",
+      },
+    },
   }
 );
+
+interface Result {
+  year: number;
+  month: number;
+  date: number;
+  morning: string;
+  lunch: string;
+  dinner: string;
+}
 
 async function run(options: { print?: boolean; save?: boolean }) {
   const { print, save } = options;
@@ -56,18 +65,18 @@ async function run(options: { print?: boolean; save?: boolean }) {
 
     const parsedMenuData = await parsePDF2Json(PDFPath);
 
-    const result: any[] = [];
+    const result: Result[] = [];
     for (const date of Object.keys(parsedMenuData)) {
       const { morning, lunch, dinner } = parsedMenuData[date];
       const [menu_month, menu_date] = date.split(/月|日/);
 
       result.push({
         year,
-        month: menu_month,
-        date: menu_date,
+        month: Number(menu_month),
+        date: Number(menu_date),
         morning,
         lunch,
-        dinner
+        dinner,
       });
     }
     console.log(result);
@@ -81,4 +90,4 @@ async function run(options: { print?: boolean; save?: boolean }) {
   }
 }
 
-run(cli.flags as any);
+run(cli.flags);
