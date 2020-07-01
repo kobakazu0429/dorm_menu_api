@@ -17,7 +17,7 @@ describe("parser", () => {
 
   test("remote pdf file", async () => {
     const parsedData = await parsePDF2Json(
-      "https://raw.githubusercontent.com/kobakazu0429/dorm_menu_api/test/fixtures/201909.pdf"
+      "https://raw.githubusercontent.com/kobakazu0429/dorm_menu_api/master/fixtures/201909.pdf"
     );
 
     const expectData = await fs.readFile(
